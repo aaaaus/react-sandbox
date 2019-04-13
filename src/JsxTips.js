@@ -4,6 +4,10 @@ function getPlaceholderText() {
   return 'e.g. Homer Simpson'
 }
 
+function getTime() {
+  return (new Date()).toLocaleTimeString()
+}
+
 const JsxTips = () => {
 
   //HOW JSX DIFFERS FROM HTML
@@ -12,9 +16,9 @@ const JsxTips = () => {
 
   //className must be used in JSX rather than class (however in newer versions of React this may change)
 
-  //POWERFUL: JSX can reference JS variables (strings, functions, etc)
+  //POWERFUL JSX INTERPOLATION: JSX can reference JS variables (strings, functions, etc)
 
-  //JSX CANNOT render objects as text (ERROR: "Objects are not valid as a React child")
+  //JSX CANNOT render JS objects as text (ERROR: "Objects are not valid as a React child")
 
   const buttonText = 'Click me!';
   const labelText = 'Enter name:';
@@ -23,7 +27,7 @@ const JsxTips = () => {
 
   return (
     <div style={{ border: '1px solid green', padding: '10px'}}>
-      <label className="label" for="name">
+      <label className="label" htmlFor="name">
         {labelText}
       </label>
       <input id="name" placeholder={getPlaceholderText()} type="text" />
@@ -31,6 +35,9 @@ const JsxTips = () => {
         {buttonText}
       </button>
       <p>{objectExample.text}</p> {/* this WILL render only because we're explicitly referring to 'text' */}
+      <span>
+        The time at page load is: {getTime()}
+      </span>
     </div>
   )
 
