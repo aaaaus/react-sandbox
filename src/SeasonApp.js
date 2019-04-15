@@ -5,7 +5,7 @@ import SeasonDisplay from './SeasonDisplay'
 //STATE:
 //only usable in class components
 //is a JS object
-//updating causes component to re-render
+//updating causes component (and any chlidren)  to re-render
 //initialized when component created
 //can only be updated using function 'setState'
 
@@ -13,12 +13,22 @@ import SeasonDisplay from './SeasonDisplay'
 
 
 class SeasonApp extends React.Component {
-  constructor(props) {
-    super(props);
 
-    //this is the ONLY time to do direct assignment to state (initialization)
-    this.state = { lat: null, errorMessage: '' };
+  //good place to do one-time setup
 
+  // constructor(props) {
+  //   super(props);
+  //
+  //   //this is the ONLY time to do direct assignment to state (initialization)
+  //   this.state = { lat: null, errorMessage: '' };
+  //
+  // }
+
+  //alternate and more common state initialization
+  state = { lat: null, errorMessage: '' };
+
+  //good place to do data loading!
+  componentDidMount() {
     window.navigator.geolocation.getCurrentPosition(
       (position) => {
         this.setState({ lat: position.coords.latitude })
@@ -30,15 +40,19 @@ class SeasonApp extends React.Component {
   }
 
   //React requires us to define a render method
+  //avoid doing anything beyond loading JSX
   render () {
 
-    return (
-      <div>
-        Latitude: {this.state.lat}
-        Error: {this.state.errorMessage}
-      </div>
+      if (this.state.errorMessage && !this.state.lat) {
+        return <div>Error: {this.state.errorMessage}</div>
+      }
 
-    )
+      if (this.state.lat && !this.state.errorMessage) {
+        return <SeasonDisplay lat={this.state.lat}/>
+      }
+
+      return <div>Loading!</div>
+
   }
 }
 
