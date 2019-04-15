@@ -16,20 +16,28 @@ class SeasonApp extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { lat: null };
+    //this is the ONLY time to do direct assignment to state (initialization)
+    this.state = { lat: null, errorMessage: '' };
+
+    window.navigator.geolocation.getCurrentPosition(
+      (position) => {
+        this.setState({ lat: position.coords.latitude })
+      },
+      (err) => {
+        this.setState({ errorMessage: err.message })
+      }
+    );
   }
 
   //React requires us to define a render method
   render () {
 
-    window.navigator.geolocation.getCurrentPosition(
-      (position) => console.log(position),
-      (err) => console.log(err)
-    );
-
-
     return (
-      <div>Latitude: </div>
+      <div>
+        Latitude: {this.state.lat}
+        Error: {this.state.errorMessage}
+      </div>
+
     )
   }
 }
