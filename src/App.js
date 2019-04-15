@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-//import logo from './logo.svg';
+
 import './App.css';
 
 import JsxTips from './JsxTips';
 import SimpleComponentProps from './SimpleComponentProps';
+import SeasonApp from './SeasonApp';
 
 class App extends Component {
   render() {
@@ -11,6 +12,7 @@ class App extends Component {
       <div className="App">
         <JsxTips />
         <SimpleComponentProps />
+        <SeasonApp />
       </div>
     );
   }

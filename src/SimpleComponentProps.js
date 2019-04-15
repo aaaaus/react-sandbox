@@ -4,7 +4,9 @@ import Turtle from './Turtle'
 
 //key tenets of components: Nesting, Reusability, Configuration
 
-//props are JS objects with key:value pairs
+//props are JS objects ("props object") with key:value pairs
+
+//JSX children of components ARE props, and come through as props.children
 
 const SimpleComponentProps = () => {
   return (
