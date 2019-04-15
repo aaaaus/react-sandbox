@@ -39,6 +39,17 @@ class SeasonApp extends React.Component {
     );
   }
 
+  semanticLoaderRender() {
+    return (
+      <div className="ui segment" style={{ height: "300px"}}>
+        <p></p>
+        <div className="ui active dimmer">
+          <div className="ui loader">Loading!</div>
+        </div>
+      </div>
+    )
+  }
+
   //React requires us to define a render method
   //avoid doing anything beyond loading JSX
   render () {
@@ -51,7 +62,7 @@ class SeasonApp extends React.Component {
         return <SeasonDisplay lat={this.state.lat}/>
       }
 
-      return <div>Loading!</div>
+      return this.semanticLoaderRender()
 
   }
 }
