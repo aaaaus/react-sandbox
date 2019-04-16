@@ -31,6 +31,7 @@ class SeasonApp extends React.Component {
   state = { lat: null, errorMessage: '' };
 
   //good place to do data loading!
+  //gets called just one time when our content is first loaded to screen
   componentDidMount() {
     window.navigator.geolocation.getCurrentPosition(
       (position) => {

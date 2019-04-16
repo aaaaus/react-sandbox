@@ -2,6 +2,8 @@ import React from 'react';
 
 import './SeasonDisplay.css'; //Webpack will see this and import it to index.html
 
+//community convention says to put config/helper functions up top and the component at the bottom
+
 const seasonConfig = {
   summer: {
     text: "Let's hit the beach!",

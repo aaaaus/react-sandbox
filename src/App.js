@@ -5,6 +5,7 @@ import './App.css';
 import JsxTips from './JsxTips';
 import SimpleComponentProps from './SimpleComponentProps';
 import SeasonApp from './SeasonApp';
+import Clock from './Clock';
 
 class App extends Component {
   render() {
@@ -13,6 +14,7 @@ class App extends Component {
         <JsxTips />
         {/* <SimpleComponentProps /> */}
         <SeasonApp />
+        <Clock />
       </div>
     );
   }
