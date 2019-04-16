@@ -1,6 +1,9 @@
 import React from 'react';
 
 import SeasonDisplay from './SeasonDisplay'
+import SeasonSpinner from './SeasonSpinner'
+
+//info on CLASSES, STATE, LIFECYCLE METHODS, DEFAULT PROPS, CONFIG FUNCTIONS
 
 //STATE:
 //only usable in class components
@@ -39,32 +42,30 @@ class SeasonApp extends React.Component {
     );
   }
 
-  semanticLoaderRender() {
-    return (
-      <div className="ui segment" style={{ height: "300px"}}>
-        <p></p>
-        <div className="ui active dimmer">
-          <div className="ui loader">Loading!</div>
-        </div>
-      </div>
-    )
+  //it is best practice to avoid conditionals in render statement; should we want to apply styling to the component we do not have to update each case, but only the parent div. Conditionals are held in this helper function.
+  renderContent() {
+    if (this.state.errorMessage && !this.state.lat) {
+      return <div>Error: {this.state.errorMessage}</div>
+    }
+
+    if (this.state.lat && !this.state.errorMessage) {
+      return <SeasonDisplay lat={this.state.lat}/>
+    }
+
+    return <SeasonSpinner message="Please accept location request" />
   }
+
 
   //React requires us to define a render method
   //avoid doing anything beyond loading JSX
   render () {
-
-      if (this.state.errorMessage && !this.state.lat) {
-        return <div>Error: {this.state.errorMessage}</div>
-      }
-
-      if (this.state.lat && !this.state.errorMessage) {
-        return <SeasonDisplay lat={this.state.lat}/>
-      }
-
-      return this.semanticLoaderRender()
-
+    return(
+      <div className="season-app">
+        {this.renderContent()}
+      </div>
+    )
   }
+
 }
 
 export default SeasonApp;
