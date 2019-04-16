@@ -1,10 +1,12 @@
 import React from 'react';
 
+import PicsSearchBar from './PicsSearchBar';
+
 const PicsApp = () => {
 
   return (
-    <div>
-      PicsApp
+    <div className="ui container">
+      <PicsSearchBar />
     </div>
   )
 }
