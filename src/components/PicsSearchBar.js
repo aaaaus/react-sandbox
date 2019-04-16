@@ -2,6 +2,9 @@ import React from 'react';
 
 class PicsSearchBar extends React.Component {
 
+  state = { term: '' }
+
+  //note: in render below, we can implement alternate callback if event handler is one-liner
   onInputChange(event) {
     console.log(event.target.value)
   }
@@ -19,7 +22,8 @@ class PicsSearchBar extends React.Component {
         <form className="ui form">
           <div className="field">
             <label>Image Search</label>
-            <input type="text" onChange={this.onInputChange}/>
+            {/* <input type="text" value={this.state.term} onChange={this.onInputChange}/> uncontrolled */}
+            <input type="text" value={this.state.term} onChange={(e) => this.setState({ term: e.target.value })} />
           </div>
         </form>
       </div>
