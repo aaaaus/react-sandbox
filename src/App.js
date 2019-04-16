@@ -3,9 +3,10 @@ import React, { Component } from 'react';
 import './App.css';
 
 import JsxTips from './JsxTips';
-import SimpleComponentProps from './SimpleComponentProps';
+// import SimpleComponentProps from './SimpleComponentProps';
 import SeasonApp from './SeasonApp';
 import Clock from './Clock';
+import PicsApp from './components/PicsApp'
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
         {/* <SimpleComponentProps /> */}
         <SeasonApp />
         <Clock />
+        <PicsApp />
       </div>
     );
   }
