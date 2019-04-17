@@ -1,4 +1,8 @@
-import React from 'react'
+import React from 'react';
+
+import './PicsImageList.css';
+
+import PicsImageCard from './PicsImageCard';
 
 const PicsImageList = (props) => {
 
@@ -7,11 +11,15 @@ const PicsImageList = (props) => {
 
   // const images = props.images.map(image => <img key={image.id} alt={image.description} src={image.urls.small} />)
   //destructured example
-  const images = props.images.map(({id, description, urls}) => <img key={id} alt={description} src={urls.small} />)
+  //const images = props.images.map(({id, description, urls}) => <img key={id} alt={description} src={urls.small} />)
 
+  //now, using new component for further customization:
+  const images = props.images.map(image => <PicsImageCard key={image.id} image={image} />)
 
   return (
-    <div>{images}</div>
+    <div className="pics-image-list">
+      {images}
+    </div>
   )
 }
 
