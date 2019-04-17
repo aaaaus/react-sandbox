@@ -5,8 +5,14 @@ class PicsSearchBar extends React.Component {
   state = { term: '' }
 
   //note: in render below, we can implement alternate callback if event handler is one-liner
-  onInputChange(event) {
-    console.log(event.target.value)
+  // onInputChange(event) {
+  //   console.log(event.target.value)
+  // }
+
+  onFormSubmit = (event) => {
+    event.preventDefault();
+
+    this.props.onSubmit(this.state.term);
   }
 
   //common property names for wiring up event handlers:
@@ -19,7 +25,7 @@ class PicsSearchBar extends React.Component {
   render() {
     return (
       <div className="ui segment">
-        <form className="ui form">
+        <form onSubmit={this.onFormSubmit} className="ui form">
           <div className="field">
             <label>Image Search</label>
             {/* <input type="text" value={this.state.term} onChange={this.onInputChange}/> uncontrolled */}

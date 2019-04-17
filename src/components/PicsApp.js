@@ -2,13 +2,21 @@ import React from 'react';
 
 import PicsSearchBar from './PicsSearchBar';
 
-const PicsApp = () => {
+class PicsApp extends React.Component {
 
-  return (
-    <div className="ui container">
-      <PicsSearchBar />
-    </div>
-  )
+  onSearchSubmit(term) {
+    console.log("Search term is: ", term);
+  }
+
+  render() {
+
+    return (
+      <div className="ui container">
+        <PicsSearchBar onSubmit={this.onSearchSubmit} />
+      </div>
+    )
+
+  }
 }
 
 export default PicsApp;
