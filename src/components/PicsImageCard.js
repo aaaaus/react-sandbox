@@ -5,6 +5,8 @@ class PicsImageCard extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = { spans: 0 }
+
     this.imageRef = React.createRef();
   }
 
@@ -13,7 +15,11 @@ class PicsImageCard extends React.Component {
   }
 
   setSpans = () => {
-    console.log(this.imageRef.current.clientHeight);
+    const height = this.imageRef.current.clientHeight;
+
+    const spans = Math.ceil(height / 10)
+
+    this.setState({ spans })
   }
 
   render() {
@@ -21,7 +27,7 @@ class PicsImageCard extends React.Component {
     const { description, urls } = this.props.image
 
     return (
-      <div>
+      <div style={{ gridRowEnd: `span ${this.state.spans}`}}>
         <img
           ref={this.imageRef}
           alt={description}
