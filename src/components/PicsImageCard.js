@@ -9,7 +9,11 @@ class PicsImageCard extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.imageRef);
+    this.imageRef.current.addEventListener('load', this.setSpans);
+  }
+
+  setSpans = () => {
+    console.log(this.imageRef.current.clientHeight);
   }
 
   render() {
