@@ -2,10 +2,14 @@ import React from 'react';
 import axios from 'axios';
 
 import PicsSearchBar from './PicsSearchBar';
+import PicsImageList from './PicsImageList';
 
 class PicsApp extends React.Component {
 
-  async onSearchSubmit(term) {
+  state = { images: [] }
+
+  // async onSearchSubmit(term) { //rewrite this as arrow below to bind this, note that async keyword moves
+  onSearchSubmit = async (term) => {
     const resp = await axios.get('https://api.unsplash.com/search/photos', {
       params: { query: term },
       headers: {
@@ -13,7 +17,7 @@ class PicsApp extends React.Component {
       }
     })
 
-    console.log(resp.data.results);
+    this.setState({ images: resp.data.results });
   }
 
   //old way of resolving promise:
@@ -37,6 +41,7 @@ class PicsApp extends React.Component {
     return (
       <div className="ui container">
         <PicsSearchBar onSubmit={this.onSearchSubmit} />
+        <PicsImageList images={this.state.images} />
       </div>
     )
 
