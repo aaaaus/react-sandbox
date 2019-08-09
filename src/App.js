@@ -6,7 +6,9 @@ import JsxTips from './JsxTips';
 // import SimpleComponentProps from './SimpleComponentProps';
 import SeasonApp from './SeasonApp';
 import Clock from './Clock';
-import PicsApp from './components/PicsApp'
+import PicsApp from './components/PicsApp';
+import FoodCart from './FoodCart';
+import FormBox from './FormBox';
 
 class App extends Component {
   render() {
@@ -17,6 +19,8 @@ class App extends Component {
         <SeasonApp />
         <Clock />
         <PicsApp />
+        <FoodCart />
+        <FormBox />
       </div>
     );
   }
